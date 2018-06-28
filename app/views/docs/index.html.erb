@@ -15,12 +15,9 @@
   <tbody>
     <% @docs.each do |doc| %>
       <tr>
-        <td><%= doc.name %></td>
+        <td><%= link_to doc.name, doc %></td>
         <td><%= doc.speciality %></td>
         <td><%= doc.zipc %></td>
-        <td><%= link_to 'Show', doc %></td>
-        <td><%= link_to 'Edit', edit_doc_path(doc) %></td>
-        <td><%= link_to 'Destroy', doc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -15,19 +15,30 @@
   <%= @doc.zipc %>
 </p>
 
-  <p>Other <%= @doc.speciality %> Doctor:
-</p>
+  <p>Other <%= @doc.speciality %> Doctor:</p>
 
+
+  <tbody>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Speciality</th>
+        <th>Zipc</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
 <% @docs.each do |doc| %>
-<% if doc.speciality == @doc.speciality %>
-<tr>
-<td><%= doc.name %></td>
-<td><%= doc.speciality %></td>
-<td><%= doc.zipc %></td>
-</tr>
+<% if doc.speciality == @doc.speciality %><table>
+  <tbody>
+      <tr>
+        <td><%= link_to doc.name, doc%></td>
+        <td><%= doc.speciality %></td>
+        <td><%= doc.zipc %></td>
+      </tr>
+    <% end %>
   <% end %>
-  <% end %>
-
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_doc_path(@doc) %> |
 <%= link_to 'Back', docs_path %>

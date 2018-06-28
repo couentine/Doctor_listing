@@ -2,7 +2,7 @@ Doc.create([
 
 {name: 'Dr Paul', speciality: 'Primary care', zipc: 94104},
 {name: 'Dr Louis', speciality: 'Primary care', zipc: 94104},
-{name: 'Dr Bidul', speciality: 'Primary care', zipc: 94104},
+{name: 'Dr Bidul', speciality: 'Primary care', zipc: 94102},
 {name: 'Dr Gerald', speciality: 'Dermatology', zipc: 94107},
 {name: 'Dr Jean', speciality: 'Dermatology', zipc: 94107},
 {name: 'Dr Francois', speciality: 'Dermatology', zipc: 94107},

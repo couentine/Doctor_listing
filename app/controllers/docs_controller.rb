@@ -11,6 +11,8 @@ class DocsController < ApplicationController
   # GET /docs/1.json
   def show
       @docs = Doc.all
+      Doc.order('speciality::integer DESC')
+
   end
 
   # GET /docs/new
