@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @doc.name %>
+</p>
+
+<p>
+  <strong>Speciality:</strong>
+  <%= @doc.speciality %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @doc.zipc %>
+</p>
+
+  <p>Other <%= @doc.speciality %> Doctor:
+</p>
+
+<% @docs.each do |doc| %>
+<% if doc.speciality == @doc.speciality %>
+<tr>
+<td><%= doc.name %></td>
+<td><%= doc.speciality %></td>
+<td><%= doc.zipc %></td>
+</tr>
+  <% end %>
+  <% end %>
+
+
+<%= link_to 'Edit', edit_doc_path(@doc) %> |
+<%= link_to 'Back', docs_path %>

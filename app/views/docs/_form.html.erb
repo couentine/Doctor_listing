@@ -1,0 +1,32 @@
+<%= form_with(model: doc, local: true) do |form| %>
+  <% if doc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(doc.errors.count, "error") %> prohibited this doc from being saved:</h2>
+
+      <ul>
+      <% doc.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :doc_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :speciality %>
+    <%= form.text_area :speciality, id: :doc_speciality %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zipc %>
+    <%= form.number_field :zipc, id: :doc_zipc %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
