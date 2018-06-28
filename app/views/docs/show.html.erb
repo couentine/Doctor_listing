@@ -14,31 +14,33 @@
   <strong>Zip:</strong>
   <%= @doc.zipc %>
 </p>
+<br>
+ <!-- this line will change each time the speciality is different -->
+  <p><b>Other <%= @doc.speciality %> Doctor:</b></p>
 
-  <p>Other <%= @doc.speciality %> Doctor:</p>
-
-
-  <tbody>
+  <table class="table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Speciality</th>
-        <th>Zipc</th>
+        <th><%= sortable 'Name'%></th>
+        <th><%= sortable  'Speciality' %></th>
+        <th><%= sortable  'zipc'  %></th>
         <th colspan="2"></th>
       </tr>
     </thead>
+
+      <tbody>
+       <!-- I am doing a loop for search in all the doctors list -->
 <% @docs.each do |doc| %>
-<% if doc.speciality == @doc.speciality %><table>
-  <tbody>
+<!-- then i select only the doctors with the same speciality than the one on display on this page-->
+<% if doc.speciality == @doc.speciality %>
       <tr>
         <td><%= link_to doc.name, doc%></td>
         <td><%= doc.speciality %></td>
-        <td><%= doc.zipc %></td>
+        <td><%= doc.zipc%></td>
       </tr>
     <% end %>
   <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_doc_path(@doc) %> |
 <%= link_to 'Back', docs_path %>

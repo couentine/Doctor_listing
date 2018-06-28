@@ -1,31 +1,32 @@
 class DocsController < ApplicationController
-  before_action :set_doc, only: [:show, :edit, :update, :destroy]
+  before_action :set_doc, only: [:show, :edit, :update]
+  helper_method :sort_column
 
-  # GET /docs
-  # GET /docs.json
+
   def index
+    # i set @docs let it be the complete list of doctors in the main page
     @docs = Doc.all
+    #this line will order each time we click on the title of the tab
+    @docs = Doc.order(sort_column + " " + sort_direction)
   end
 
-  # GET /docs/1
-  # GET /docs/1.json
+
   def show
+        # i set @docs let it be the complete list of doctors in the show page
       @docs = Doc.all
-      Doc.order('speciality::integer DESC')
-
+          #this line will order each time we click on the title of the tab
+      @docs = Doc.order(sort_column + " " + sort_direction)
   end
 
-  # GET /docs/new
+
   def new
     @doc = Doc.new
   end
 
-  # GET /docs/1/edit
+
   def edit
   end
 
-  # POST /docs
-  # POST /docs.json
   def create
     @doc = Doc.new(doc_params)
 
@@ -40,8 +41,7 @@ class DocsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /docs/1
-  # PATCH/PUT /docs/1.json
+
   def update
     respond_to do |format|
       if @doc.update(doc_params)
@@ -54,15 +54,6 @@ class DocsController < ApplicationController
     end
   end
 
-  # DELETE /docs/1
-  # DELETE /docs/1.json
-  def destroy
-    @doc.destroy
-    respond_to do |format|
-      format.html { redirect_to docs_url, notice: 'Doc was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -74,4 +65,15 @@ class DocsController < ApplicationController
     def doc_params
       params.require(:doc).permit(:name, :speciality, :zipc)
     end
+
+# when we lunch the front page it will sort by speciality automaticly
+    def sort_column
+      params[:sort] || 'speciality'
+    end
+    # when we lunch the front page it will be an asc sort automaticly
+
+    def sort_direction
+      params[:direction] || "asc"
+    end
+
 end
