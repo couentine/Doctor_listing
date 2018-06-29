@@ -4,11 +4,18 @@ class DocsController < ApplicationController
 
 
   def index
-    # i set @docs let it be the complete list of doctors in the main page
-    @docs = Doc.all
-    #this line will order each time we click on the title of the tab
-    @docs = Doc.order(sort_column + " " + sort_direction)
+    # i set @docs let it be the complete list of doctors in the main page 
+  @docs = Doc.all
+  if params[:search]
+     @docs = Doc.search(params[:search])
+   else
+     @docs = Doc.all
+   end
+
+ @docs = Doc.order(sort_column + " " + sort_direction)
+
   end
+
 
 
   def show
@@ -64,7 +71,7 @@ class DocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doc_params
-      params.require(:doc).permit(:name, :speciality, :zipc)
+      params.require(:docs).permit(:name, :speciality, :zipc, :term)
     end
 
 # when we lunch the front page it will sort by speciality automaticly
