@@ -4,7 +4,7 @@ class CreateDocs < ActiveRecord::Migration[5.1]
       t.string :name
       t.text :speciality
       t.integer :zipc
-
+      
       t.timestamps
     end
   end
