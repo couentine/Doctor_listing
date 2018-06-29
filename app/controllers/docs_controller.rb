@@ -58,6 +58,7 @@ class DocsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_doc
+      # i set up @doc to be the one selected
       @doc = Doc.find(params[:id])
     end
 
