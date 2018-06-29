@@ -4,15 +4,16 @@ class DocsController < ApplicationController
 
 
   def index
-    # i set @docs let it be the complete list of doctors in the main page 
+    # i set @docs let it be the complete list of doctors in the main page
   @docs = Doc.all
   if params[:search]
      @docs = Doc.search(params[:search])
    else
      @docs = Doc.all
+     @docs = Doc.order(sort_column + " " + sort_direction)
+
    end
 
- @docs = Doc.order(sort_column + " " + sort_direction)
 
   end
 
