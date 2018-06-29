@@ -4,14 +4,14 @@
 
 <br>
 <center>
-<%= form_tag(docs_path, :method => "get", id: "search-form") do %>
+<!--<%= form_tag(docs_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Doctors or Speciality" %>
     <%= submit_tag "Search", :name => nil %>
     <% if @docs.blank? %>
   <h4>There are no doctors containing the term <%= params[:search] %>.</h4>
 <% end %>
 <% end %>
-</center>
+</center>-->
 <br>
 
   <table class="table">
