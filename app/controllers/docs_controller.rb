@@ -63,6 +63,16 @@ class DocsController < ApplicationController
   end
 
 
+  def destroy
+    @doc.destroy
+    respond_to do |format|
+      format.html { redirect_to docs_url, notice: 'Doc was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_doc
@@ -72,9 +82,8 @@ class DocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doc_params
-      params.require(:docs).permit(:name, :speciality, :zipc, :term)
+      params.require(:doc).permit(:name, :speciality, :zipc)
     end
-
 # when we lunch the front page it will sort by speciality automaticly
     def sort_column
       params[:sort] || 'speciality'
